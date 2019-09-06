@@ -1,5 +1,6 @@
 enum Page {
   basic,
-  hero,
-  fitnessTracker,
+  fetch,
+  custom,
+  nested,
 }

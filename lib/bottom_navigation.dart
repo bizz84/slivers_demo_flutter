@@ -11,13 +11,15 @@ class BottomNavigation extends StatelessWidget {
 
   static const Map<Page, IconData> icons = {
     Page.basic: Icons.view_headline,
-    Page.hero: Icons.format_size,
-    Page.fitnessTracker: Icons.directions_run,
+    Page.fetch: Icons.cloud_download,
+    Page.custom: Icons.directions_run,
+    Page.nested: Icons.table_chart,
   };
   static const Map<Page, String> names = {
     Page.basic: 'basic',
-    Page.hero: 'appBar',
-    Page.fitnessTracker: 'fitness',
+    Page.fetch: 'fetch',
+    Page.custom: 'custom',
+    Page.nested: 'nested',
   };
 
   BottomNavigationBarItem _buildItem(Page page) {

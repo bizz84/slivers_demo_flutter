@@ -1,11 +1,9 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 
-class HeroHeader implements SliverPersistentHeaderDelegate {
-  HeroHeader({
+class FetchPageHeader implements SliverPersistentHeaderDelegate {
+  FetchPageHeader({
     this.minExtent,
     @required this.maxExtent,
   });
@@ -41,10 +39,11 @@ class HeroHeader implements SliverPersistentHeaderDelegate {
           right: 16.0,
           bottom: 16.0,
           child: Text(
-            'Hero Image',
+            'Lorem ipsum',
             style: TextStyle(
               fontSize: 32.0,
-              color: Colors.white.withOpacity(1.0 - shrinkOffset / maxExtent),
+              color:
+                  Colors.white /*.withOpacity(1.0 - shrinkOffset / maxExtent)*/,
             ),
           ),
         ),
@@ -61,7 +60,7 @@ class HeroHeader implements SliverPersistentHeaderDelegate {
   FloatingHeaderSnapConfiguration get snapConfiguration => null;
 }
 
-class HeroPage extends StatelessWidget {
+class FetchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,13 +74,13 @@ class HeroPage extends StatelessWidget {
       child: CustomScrollView(
         slivers: <Widget>[
           SliverPersistentHeader(
-            //pinned: true,
-            delegate: HeroHeader(
+            pinned: true,
+            delegate: FetchPageHeader(
               minExtent: 150.0,
               maxExtent: 250.0,
             ),
           ),
-          HeroBody(),
+          FetchContent(),
           // SliverFillRemaining(
           //   child: Center(
           //     child: Text(
@@ -96,28 +95,28 @@ class HeroPage extends StatelessWidget {
   }
 }
 
-class HeroBody extends StatefulWidget {
+class FetchContent extends StatefulWidget {
   @override
-  _HeroBodyState createState() => _HeroBodyState();
+  _FetchContentState createState() => _FetchContentState();
 }
 
-class _HeroBodyState extends State<HeroBody> {
+class _FetchContentState extends State<FetchContent> {
   Future<String> _loader;
   bool _shouldFail = false;
 
+  // mock function to load some data or fail after some delay
   Future<String> getData(bool shouldFail) async {
     await Future<void>.delayed(Duration(seconds: 3));
-    if (_shouldFail) {
+    if (shouldFail) {
       throw PlatformException(code: '404');
     }
     return 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?';
   }
 
-  void retry() {
+  void _retry() {
+    // update loader
     _loader = getData(!_shouldFail);
-    setState(() {
-      _shouldFail = !_shouldFail;
-    });
+    setState(() => _shouldFail = !_shouldFail);
   }
 
   @override
@@ -138,43 +137,59 @@ class _HeroBodyState extends State<HeroBody> {
         }
         if (snapshot.hasError) {
           return SliverFillRemaining(
-              child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text('An error occurred'),
-              RaisedButton(
-                child: Text('Retry'),
-                onPressed: () => retry(),
-              ),
-            ],
-          ));
-        }
-        if (snapshot.hasData) {
-          // show something
-          return SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    snapshot.data,
-                    style: Theme.of(context).textTheme.headline,
-                  ),
-                  RaisedButton(
-                    child: Text('Reload'),
-                    onPressed: () => retry(),
-                  ),
-                ],
-              ),
+            child: TextAndButton(
+              content: 'An error occurred',
+              buttonText: 'Retry',
+              onPressed: _retry,
             ),
           );
         }
-        // show placeholder
+        if (snapshot.hasData) {
+          return SliverToBoxAdapter(
+            child: TextAndButton(
+              content: snapshot.data,
+              buttonText: 'Reload',
+              onPressed: _retry,
+            ),
+          );
+        }
         return SliverFillRemaining(
           child: Center(child: Text('No Content')),
         );
       },
+    );
+  }
+}
+
+class TextAndButton extends StatelessWidget {
+  const TextAndButton({Key key, this.content, this.buttonText, this.onPressed})
+      : super(key: key);
+  final String content;
+  final String buttonText;
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text(
+            content,
+            style: Theme.of(context).textTheme.headline,
+          ),
+          RaisedButton(
+            color: Theme.of(context).primaryColor,
+            child: Text(buttonText,
+                style: Theme.of(context)
+                    .textTheme
+                    .headline
+                    .copyWith(color: Colors.white)),
+            onPressed: onPressed,
+          ),
+        ],
+      ),
     );
   }
 }
