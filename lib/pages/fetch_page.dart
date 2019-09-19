@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
@@ -42,13 +44,19 @@ class FetchPageHeader implements SliverPersistentHeaderDelegate {
             'Lorem ipsum',
             style: TextStyle(
               fontSize: 32.0,
-              color:
-                  Colors.white /*.withOpacity(1.0 - shrinkOffset / maxExtent)*/,
+              color: Colors.white.withOpacity(titleOpacity(shrinkOffset)),
             ),
           ),
         ),
       ],
     );
+  }
+
+  double titleOpacity(double shrinkOffset) {
+    // simple formula: fade out text as soon as shrinkOffset > 0
+    return 1.0 - max(0.0, shrinkOffset) / maxExtent;
+    // more complex formula: starts fading out text when shrinkOffset > minExtent
+    //return 1.0 - max(0.0, (shrinkOffset - minExtent)) / (maxExtent - minExtent);
   }
 
   @override
@@ -74,13 +82,14 @@ class FetchPage extends StatelessWidget {
       child: CustomScrollView(
         slivers: <Widget>[
           SliverPersistentHeader(
-            pinned: true,
+            pinned: false,
+            floating: true,
             delegate: FetchPageHeader(
               minExtent: 150.0,
               maxExtent: 250.0,
             ),
           ),
-          FetchContent(),
+          FetchPageContent(),
           // SliverFillRemaining(
           //   child: Center(
           //     child: Text(
@@ -95,12 +104,12 @@ class FetchPage extends StatelessWidget {
   }
 }
 
-class FetchContent extends StatefulWidget {
+class FetchPageContent extends StatefulWidget {
   @override
-  _FetchContentState createState() => _FetchContentState();
+  _FetchPageContentState createState() => _FetchPageContentState();
 }
 
-class _FetchContentState extends State<FetchContent> {
+class _FetchPageContentState extends State<FetchPageContent> {
   Future<String> _loader;
   bool _shouldFail = false;
 

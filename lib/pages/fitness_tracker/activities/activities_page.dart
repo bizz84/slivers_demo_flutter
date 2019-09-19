@@ -112,7 +112,7 @@ class ActivitiesPage extends StatelessWidget {
         ),
         SliverList(
           delegate: SliverChildBuilderDelegate(
-            (BuildContext context, int index) => ActivityCard(
+            (context, index) => ActivityCard(
               user: user,
               activity: activities[index],
             ),
