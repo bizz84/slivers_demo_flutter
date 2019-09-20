@@ -17,7 +17,7 @@ class BottomNavigation extends StatelessWidget {
   };
   static const Map<Page, String> names = {
     Page.basic: 'basic',
-    Page.fetch: 'fetch',
+    Page.fetch: 'networking',
     Page.custom: 'custom',
 //    Page.nested: 'nested',
   };
