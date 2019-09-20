@@ -19,7 +19,7 @@ class SliversBasicPage extends StatelessWidget {
           expandedHeight: 120.0,
           flexibleSpace: FlexibleSpaceBar(
             //background: ,
-            title: Text('Slivers'),
+            title: Text('Basic Slivers'),
           ),
         ),
         SliverFixedExtentList(
