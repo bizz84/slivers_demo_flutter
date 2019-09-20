@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
       Page.basic: (_) => SliversBasicPage(),
       Page.fetch: (_) => FetchPage(),
       Page.custom: (_) => ActivitiesPage.withSampleData(),
-      Page.nested: (_) => NestedScrollViewPage(),
+//      Page.nested: (_) => NestedScrollViewPage(),
     }[_page](context);
   }
 }

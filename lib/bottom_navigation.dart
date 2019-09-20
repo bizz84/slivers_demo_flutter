@@ -13,13 +13,13 @@ class BottomNavigation extends StatelessWidget {
     Page.basic: Icons.view_headline,
     Page.fetch: Icons.cloud_download,
     Page.custom: Icons.directions_run,
-    Page.nested: Icons.table_chart,
+//    Page.nested: Icons.table_chart,
   };
   static const Map<Page, String> names = {
     Page.basic: 'basic',
     Page.fetch: 'fetch',
     Page.custom: 'custom',
-    Page.nested: 'nested',
+//    Page.nested: 'nested',
   };
 
   BottomNavigationBarItem _buildItem(Page page) {
