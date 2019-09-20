@@ -1,16 +1,16 @@
-# slivers_demo_flutter
+# Slivers Layout Examples in Flutter 
 
-A new Flutter project.
+YouTube video walkthrough with explanations here: 
 
-## Getting Started
+[![Flutter Slivers Deep Dive: SliverAppBar, SliverPersistentHeader](media/slivers-layout-deep-dive-poster.png)]()
 
-This project is a starting point for a Flutter application.
+This sample app shows you how to use slivers with some practical examples.
 
-A few resources to get you started if this is your first Flutter project:
+### For more articles and video tutorials, check out [Coding With Flutter](https://codingwithflutter.com/).
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### [License: MIT](LICENSE.md)
+
+### Attribution
+
+Youtube Play Icon by [Youtube Clipart](http://clipartmag.com/youtube-clipart).
