@@ -6,19 +6,10 @@ class SliversBasicPage extends StatelessWidget {
     return CustomScrollView(
       slivers: <Widget>[
         SliverAppBar(
-          // leading: Icon(Icons.chevron_left),
-          // title: Text('Fixed Title'),
-          // actions: <Widget>[
-          //   IconButton(
-          //     icon: Icon(Icons.share),
-          //     onPressed: () {},
-          //   ),
-          // ],
           //pinned: true,
           floating: false,
           expandedHeight: 120.0,
           flexibleSpace: FlexibleSpaceBar(
-            //background: ,
             title: Text('Basic Slivers'),
           ),
         ),
