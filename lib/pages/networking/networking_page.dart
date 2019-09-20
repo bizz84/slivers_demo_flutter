@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart';
 import 'package:slivers_demo_flutter/pages/networking/networking_page_content.dart';
 import 'package:slivers_demo_flutter/pages/networking/networking_page_header.dart';
 
