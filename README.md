@@ -1,4 +1,4 @@
-# Slivers Layout Examples in Flutter 
+# Example Layouts with Slivers in Flutter
 
 YouTube video walkthrough with explanations here: 
 
