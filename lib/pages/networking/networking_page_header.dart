@@ -8,8 +8,8 @@ class NetworkingPageHeader implements SliverPersistentHeaderDelegate {
     this.minExtent,
     @required this.maxExtent,
   });
-  final double maxExtent;
   final double minExtent;
+  final double maxExtent;
 
   @override
   Widget build(
