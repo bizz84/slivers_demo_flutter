@@ -2,7 +2,7 @@
 
 YouTube video walkthrough with explanations here: 
 
-[![Flutter Slivers Deep Dive: SliverAppBar, SliverPersistentHeader](media/sliver-layouts-overview-poster.png)]()
+[![Flutter Slivers Deep Dive: SliverAppBar, SliverPersistentHeader](media/sliver-layouts-overview-poster.png)](https://youtu.be/E3-WdYBrEDc)
 
 This sample app shows you how to use slivers with some practical examples.
 
