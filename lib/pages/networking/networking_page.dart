@@ -6,14 +6,7 @@ class NetworkingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _scrollView(context),
-    );
-  }
-
-  Widget _scrollView(BuildContext context) {
-    // Use LayoutBuilder to get the hero header size while keeping the image aspect-ratio
-    return Container(
-      child: CustomScrollView(
+      body: CustomScrollView(
         slivers: <Widget>[
           SliverPersistentHeader(
             pinned: false,
