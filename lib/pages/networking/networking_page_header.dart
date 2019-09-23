@@ -24,10 +24,7 @@ class NetworkingPageHeader implements SliverPersistentHeaderDelegate {
         Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [
-                Colors.transparent,
-                Colors.black54,
-              ],
+              colors: [Colors.transparent, Colors.black54],
               stops: [0.5, 1.0],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
